@@ -11,8 +11,7 @@ router.post("/", async (req, res) => {
     if(!validPassword)
         return res.status(400).send({message: "Invalid username or password!"})
 
-    const token = user.generateAuthToken()
-    res.status(200).send({ data: token, message: "Signin please wait..." })
+    res.status(200).send({ message: "Signin please wait..." }) 
 
     })
 

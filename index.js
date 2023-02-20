@@ -1,5 +1,5 @@
 require('dotenv').config();
-require('express-async-errors');
+require('express-async-errors'); 
 
 const express = require('express');
 const cors = require('cors')
@@ -8,7 +8,7 @@ const connection = require("./db")
 
 const userRoutes = require('./routes/users') 
 const authRoutes = require("./routes/auth")
-const songRoutes = require('./routes/songs')
+const songRoutes = require('./routes/songs') 
 
 const app = express();
 

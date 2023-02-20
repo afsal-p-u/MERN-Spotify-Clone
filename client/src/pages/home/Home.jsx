@@ -1,25 +1,35 @@
 import React from 'react'
-import Aside from '../../components/home/aside/Aside';
-import Container from '../../components/home/container/Container';
-import Favourite from '../../components/home/favourite/Favourite';
-import Topbar from '../../components/home/topbar/Topbar';
+import { Route, Routes } from 'react-router-dom'
 
-import './home.scss';
+import Navbar from '../../components/navbar/Navbar';
+import Playbar from '../../components/playbar/Playbar';
+import Sidebar from '../../components/sidebar/Sidebar';
+import CreatePlaylist from '../../components/homeComponents/createPlaylist/CreatePlaylist'
+import HomeComponent from '../../components/homeComponents/homeComponent/HomeComponent'
+import Library from '../../components/homeComponents/library/Library'
+import LikedSongs from '../../components/homeComponents/likedSongs/LikedSongs'
+import Search from '../../components/homeComponents/search/Search'
 
-export const Home = () => {
+const Home = () => {
   return (
-    <div className='home'>
-        <div className="left">
-            <Aside />
+    <div>
+      <div style={{display: "flex"}}>
+        <Sidebar />
+        <div style={{width: "100%"}}>
+          <Navbar />
+          {/* <Home /> */}
+          <Routes>
+            <Route path='/' element={<HomeComponent />} />
+            <Route path='/search' element={<Search />} />
+            <Route path='/library' element={<Library />} />
+            <Route path='/create-playlist' element={<CreatePlaylist />} />
+            <Route path='/liked' element={<LikedSongs />} />
+          </Routes>
         </div>
-        <div className="right">
-            <Topbar />
-            <div className="container">
-                <h1>Good Afternoon</h1>
-                <Favourite />
-            </div>
-            {/* <Container /> */}
-        </div>
+      </div>
+      <Playbar />
     </div>
   )
 }
+
+export default Home
