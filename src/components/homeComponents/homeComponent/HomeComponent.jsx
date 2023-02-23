@@ -1,10 +1,11 @@
 import React from 'react'
-import {Pause} from '@material-ui/icons'
+import {Pause} from '@material-ui/icons';
 
 import './homeComponent.scss' 
-import Img from '../.../../../../assets/aintmefault.jpg'
+import Img from '../.../../../../assets/images/aintmefault.jpg'
 
-const HomeComponent = () => {
+const HomeComponent = ({songs}) => {
+
   return (
     <div className="home-container">
       <div className="top">
@@ -72,104 +73,17 @@ const HomeComponent = () => {
           <small>Show all</small>
         </div>
         <div className="bottom-down">
-          <div className="music-lists">
-            <div className="up">
-              <img src={Img} alt="" />
+          {songs?.map((song) => (
+            <div className="music-lists">
+              <div className="up">
+                <img src={song.img} alt="" />
+              </div>
+              <div className="down">
+                <h3>{song.name}</h3>
+                <p>{song.artist}</p>
+              </div>
             </div>
-            <div className="down">
-              <h3>Daily Mix 1</h3>
-              <p>Alan Walker, Juice WRLD, Fleuire and more</p>
-            </div>
-          </div>
-          <div className="music-lists">
-            <div className="up">
-              <img src={Img} alt="" />
-            </div>
-            <div className="down">
-              <h3>Daily Mix 1</h3>
-              <p>Alan Walker, Juice WRLD, Fleuire and more</p>
-            </div>
-          </div>
-          <div className="music-lists">
-            <div className="up">
-              <img src={Img} alt="" />
-            </div>
-            <div className="down">
-              <h3>Daily Mix 1</h3>
-              <p>Alan Walker, Juice WRLD, Fleuire and more</p>
-            </div>
-          </div>
-          <div className="music-lists">
-            <div className="up">
-              <img src={Img} alt="" />
-            </div>
-            <div className="down">
-              <h3>Daily Mix 1</h3>
-              <p>Alan Walker, Juice WRLD, Fleuire and more</p>
-            </div>
-          </div>
-          <div className="music-lists">
-            <div className="up">
-              <img src={Img} alt="" />
-            </div>
-            <div className="down">
-              <h3>Daily Mix 1</h3>
-              <p>Alan Walker, Juice WRLD, Fleuire and more</p>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div className="bottom">
-        <div className="bottom-up">
-          <h4>Made For Afsalpu</h4>
-          <small>Show all</small>
-        </div>
-        <div className="bottom-down">
-          <div className="music-lists">
-            <div className="up">
-              <img src={Img} alt="" />
-            </div>
-            <div className="down">
-              <h3>Daily Mix 1</h3>
-              <p>Alan Walker, Juice WRLD, Fleuire and more</p>
-            </div>
-          </div>
-          <div className="music-lists">
-            <div className="up">
-              <img src={Img} alt="" />
-            </div>
-            <div className="down">
-              <h3>Daily Mix 1</h3>
-              <p>Alan Walker, Juice WRLD, Fleuire and more</p>
-            </div>
-          </div>
-          <div className="music-lists">
-            <div className="up">
-              <img src={Img} alt="" />
-            </div>
-            <div className="down">
-              <h3>Daily Mix 1</h3>
-              <p>Alan Walker, Juice WRLD, Fleuire and more</p>
-            </div>
-          </div>
-          <div className="music-lists">
-            <div className="up">
-              <img src={Img} alt="" />
-            </div>
-            <div className="down">
-              <h3>Daily Mix 1</h3>
-              <p>Alan Walker, Juice WRLD, Fleuire and more</p>
-            </div>
-          </div>
-          <div className="music-lists">
-            <div className="up">
-              <img src={Img} alt="" />
-            </div>
-            <div className="down">
-              <h3>Daily Mix 1</h3>
-              <p>Alan Walker, Juice WRLD, Fleuire and more</p>
-            </div>
-          </div>
+          ))}
         </div>
       </div>
     </div>

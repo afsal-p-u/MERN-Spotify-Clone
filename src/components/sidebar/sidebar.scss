@@ -33,15 +33,21 @@
                     align-items: center;
                     margin: 14px 0;
 
+                    &:hover {
+                        a {
+                            color: #eee;
+                        }
+                        .icon {
+                            color: #eee;
+                        }
+                    }
+
                     a {
                         color: var(--color-light);
                         font-size: 14px;
                         font-weight: 600;
 
                         &.active {
-                            color: var(--color-primary);
-                        }
-                        &:hover {
                             color: var(--color-primary);
                         }
                     }
@@ -55,15 +61,6 @@
                         &.active {
                             color: var(--color-primary);
                         }
-                        &:hover {
-                            color: var(--color-primary);
-                        }
-                        // &.fav {
-                        //     background: blue;    
-                        //     font-size: 23px;
-                        //     border-radius: 5px;
-                        //     margin-right: 16px;
-                        // }
                     }
                 }
             }
