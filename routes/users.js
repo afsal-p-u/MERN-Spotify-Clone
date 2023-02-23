@@ -1,5 +1,6 @@
 const router = require('express').Router();
-const bcrypt = require('bcrypt');
+// const bcrypt = require('bcrypt');
+const CryptJS = require('crypto-js')
 
 const { User, validate} = require('../models/user');
 const admin = require('../middleware/admin')
@@ -18,8 +19,9 @@ router.post('/', async (req, res) => {
         return res.status(403).send({message: "User with given email already exist!"})
     }
  
-    const salt = await bcrypt.genSalt(Number(process.env.SALT))
-    const hashPassword = await bcrypt.hash(req.body.password, salt)
+    // const salt = await bcrypt.genSalt(Number(process.env.SALT))
+    // const hashPassword = await bcrypt.hash(req.body.password, salt)
+    const hashPassword = await CryptJS.AES.encrypt(req.body.password, process.env.SECRET_KEY)
 
     let newUser = await new User({
         ...req.body,

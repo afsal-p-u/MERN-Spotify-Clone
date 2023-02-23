@@ -8,9 +8,27 @@ import CreatePlaylist from '../../components/homeComponents/createPlaylist/Creat
 import HomeComponent from '../../components/homeComponents/homeComponent/HomeComponent'
 import Library from '../../components/homeComponents/library/Library'
 import LikedSongs from '../../components/homeComponents/likedSongs/LikedSongs'
+import axios from 'axios'
+import { useEffect, useState } from 'react';
+
 import Search from '../../components/homeComponents/search/Search'
 
 const Home = () => {
+
+  const [songs, setSongs] = useState(null)
+
+  const getSongs = async () => {
+    await axios.get(`${process.env.REACT_APP_URL}/songs`).then((res) => {
+      setSongs(res.data.data)
+    }).catch((err) => {
+      console.log(err)
+    })
+  }
+
+  useEffect(() => {
+    getSongs()
+  }, [])
+
   return (
     <div>
       <div style={{display: "flex"}}>
@@ -19,7 +37,7 @@ const Home = () => {
           <Navbar />
           {/* <Home /> */}
           <Routes>
-            <Route path='/' element={<HomeComponent />} />
+            <Route path='/' element={<HomeComponent songs={songs} />} />
             <Route path='/search' element={<Search />} />
             <Route path='/library' element={<Library />} />
             <Route path='/create-playlist' element={<CreatePlaylist />} />

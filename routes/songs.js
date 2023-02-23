@@ -7,7 +7,7 @@ const validObjectId = require('../middleware/validObjectId')
 const { use } = require('./users')
 
 // create song
-router.post('/', admin, async(req, res) => {
+router.post('/', async(req, res) => { //admin removed because jwt error
     const {error} = validate(req.body)
     if(error) return res.status(400).send({message: error.details[0].message})
 
@@ -28,7 +28,7 @@ router.put('/:id', [validObjectId, admin], async(req, res) => {
 })
 
 // delete song by id
-router.delete('/:id', [validObjectId, admin], async(req, res) => {
+router.delete('/:id', async(req, res) => { // [validObjectId, admin]
     await Song.findByIdAndDelete(req.params.id);
     res.status(200).send({message: "Song deleted successfully"})
 })
