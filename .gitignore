@@ -1,6 +1,6 @@
 **/node_modules
-**/client
-**/admin
+/client
+/admin
 .env
 .gitignore
 yarn.lock
